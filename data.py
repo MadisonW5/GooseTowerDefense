@@ -178,14 +178,14 @@ bloons = { #MW: another nested dictionary that holds the stats of each kind of b
         "strength": 20,
         "speed": 4,
         },
-    "moab": #MW: information for the moab
+    "wrench": #MW: information for the wrench
         {
         "strength": 350,
         "speed": 1,
         },
 }
 
-bloonColors = { #MW: dictionary holding the names of all colours of bloons (excluding hardhat and moab)
+bloonColors = { #MW: dictionary holding the names of all colours of bloons (excluding hardhat and wrench)
     1: "red", 
     2: "blue", 
     3: "green",
@@ -207,7 +207,7 @@ levels = { #MW: a dictionary containing lists that contain information for each 
     (7, "hardhat"), (15, "pink")],
     9: [(50, "blue"), (10, "hardhat"), (20, "pink"), 
     (30, "yellow"), (15, "pink")],
-    10: [(1, "moab"), (10, "hardhat")]
+    10: [(1, "wrench"), (10, "hardhat")]
 }
 
 class Coord(object): #MW: create a class containing waypoints for each map (waypoints tell the bloons what direction to face so they can follow the path of the map)
