@@ -36,7 +36,7 @@ class Tower(pygame.sprite.Sprite):#SZ: creates a class for the tower objects
         self.price = towerTypes[self.name]["price"] #SZ: looks up the tower price in the towerTypes dictionary
         self.cooldown = towerTypes[self.name]["cooldown"] #SZ: looks up the tower cooldown in the towerTypes dictionary
         self.damage = towerTypes[self.name]["damage"] #SZ: looks up the tower damage in the towerTypes dictionary
-        self.slow = towerTypes[self.name]["slow"] #SZ: looks up the tower slow value in the towerTypes dictionary (probably used for the gluegunner tower)
+        self.slow = towerTypes[self.name]["slow"] #SZ: looks up the tower slow value in the towerTypes dictionary (probably used for the aucoin tower)
         self.range = towerTypes[self.name]["range"] #SZ: looks up the tower range in the towerTypes dictionary
 
         #used for shooting bullets
@@ -49,18 +49,18 @@ class Tower(pygame.sprite.Sprite):#SZ: creates a class for the tower objects
 
     #some hard coded values of the monkey sidebar
     def clickedMonkeys(x, y): #SZ: This function is used to check what tower was selected when the mouse is clicked. 
-        if x > 825 and x < 885 and y > 140 and y < 215: #SZ: Between (825,140) and (885,215), the tower selected will be a dart monkey
-            return "dartmonkey"
-        elif x > 890 and x < 950 and y > 140 and y < 215: #SZ: Between (890,140) and (950,215), the tower selected will be a ninja monkey
-            return "ninjamonkey"
-        elif x > 825 and x < 885 and y > 225 and y < 300: #SZ: Between (825,225) and (885,300), the tower selected will be a glue gunner
-            return "gluegunner"
-        elif x > 890 and x < 950 and y > 225 and y < 300: #SZ: Between (890,225) and (950,300), the tower selected will be a sniper
-            return "sniper"
-        elif x > 825 and x < 885 and y > 310 and y < 380: #SZ: Between (825,310) and (885,300), the tower selected will be a glue boat
-            return "boat"
-        elif x > 890 and x < 950 and y > 310 and y < 380: #SZ: Between (890,310) and (950,380), the tower selected will be a super monkey
-            return "supermonkey"
+        if x > 825 and x < 885 and y > 140 and y < 215: #SZ: Between (825,140) and (885,215), the tower selected will be a hamilton
+            return "hamilton"
+        elif x > 890 and x < 950 and y > 140 and y < 215: #SZ: Between (890,140) and (950,215), the tower selected will be an azevedo
+            return "azevedo"
+        elif x > 825 and x < 885 and y > 225 and y < 300: #SZ: Between (825,225) and (885,300), the tower selected will be an aucoin
+            return "aucoin"
+        elif x > 890 and x < 950 and y > 225 and y < 300: #SZ: Between (890,225) and (950,300), the tower selected will be a kamkar
+            return "kamkar"
+        elif x > 825 and x < 885 and y > 310 and y < 380: #SZ: Between (825,310) and (885,300), the tower selected will be a tam
+            return "tam"
+        elif x > 890 and x < 950 and y > 310 and y < 380: #SZ: Between (890,310) and (950,380), the tower selected will be a pendar
+            return "pendar"
         else: #SZ: When clicked, the mouse position is not within any of the tower icons
             return None 
 
@@ -77,17 +77,17 @@ class Tower(pygame.sprite.Sprite):#SZ: creates a class for the tower objects
         player.money -= towerTypes[self.name]["upgrade_price"] #SZ: subtracts the players money from the cost of the upgrade price, retrieved from the tower types dictionary 
 
     def legalPlacements(self, x, y): #SZ: This function determines the valid coordinates of where the towers can be placed. x, y is the location of where the player wants to put 
-        if self.name == "boat": #SZ: if the tower is the boat tower 
+        if self.name == "tam": #SZ: if the tower is the tam tower 
             #can only be placed in water 
             if player.game != "map2": #SZ: Map 1 
-                coordinates = Coord.boatValues #SZ: gets coordinates from boatValues (in data)
+                coordinates = Coord.tamValues #SZ: gets coordinates from tamValues (in data)
             else: #SZ: Map 2 
-                coordinates = Coord.boatValues2 #SZ: gets coordinates from boatValues2 (in data)
+                coordinates = Coord.tamValues2 #SZ: gets coordinates from tamValues2 (in data)
             x1, x2 = coordinates[0][0], coordinates[1][0] #SZ: sets x1, x2 coordinates from retrieving the first item in each tuple in coordinates 
             y1, y2 = coordinates[0][1], coordinates[1][1] #SZ: sets y1, y2 coordinates from retrieving the first item in each tuple in coordinates 
             if x > x1 and x < x2: #SZ: checks if within the limits of x 
                 if y > y1 and y < y2: #SZ: checks if within the limits of y
-                    return True #SZ: If both are true, boat tower can be placed here 
+                    return True #SZ: If both are true, tam tower can be placed here 
         else: #SZ: literally any other type of tower 
             if player.game != "map2": #SZ: Map 1 
                 nonTrackValues = Coord.nonTrackValues #SZ: gets non track values as valid placements for the tower 
@@ -123,13 +123,13 @@ class Tower(pygame.sprite.Sprite):#SZ: creates a class for the tower objects
         width = 4
 
         player.screen.blit(self.image, self.rect) #SZ: draws the image at the coordinates of rect
-        if self.name == "sniper" or self.name == "sniper_upgraded": 
-            #since sniper has unlimited range, we cannot draw the usual circle
+        if self.name == "kamkar" or self.name == "kamkar_upgraded": 
+            #since kamkar has unlimited range, we cannot draw the usual circle
             #therefore we just draw a small circle of radius 40 around it
             radius = 40
             pygame.draw.circle(player.screen, color, 
             self.rect.center, radius, width) #SZ: draws a circle onto the screen with the color associated, with the circle starting at the center, and a radius of 40, with line thickness of 4
-        else: #SZ: case for non sniper objects 
+        else: #SZ: case for non kamkar objects 
             pygame.draw.circle(player.screen, color, 
             self.rect.center, self.range, width) #SZ: draws a circle onto the screen with the color associated, with the circle starting at the center, and a radius based on the range, with line thickness of 4
 
@@ -139,7 +139,7 @@ class Tower(pygame.sprite.Sprite):#SZ: creates a class for the tower objects
         width = 4 
         range = 40 
         green = (141,192,55)
-        if self.name == "sniper" or self.name == "sniper_upgraded": 
+        if self.name == "kamkar" or self.name == "kamkar_upgraded": 
             pygame.draw.circle(surface, green, self.rect.center, range, width) #SZ: draws a green circle onto the screen, starting from the center of the rect associated with the image, with a radius based on the range, and line thickness of 4.
         else:
             pygame.draw.circle(surface, green, self.rect.center, 
@@ -173,12 +173,12 @@ class Tower(pygame.sprite.Sprite):#SZ: creates a class for the tower objects
         if self.ready: #SZ: if current tower is ready 
             for bloon in player.spriteBloons: #SZ: checks every bloon thats currently in the sprite group 
 
-                if "gluegunner" in self.name: #SZ: category for gluegunner tower 
-                #gluegunner only wants to shoot bloons that aren't already slow
+                if "aucoin" in self.name: #SZ: category for aucoin tower 
+                #aucoin only wants to shoot bloons that aren't already slow
                     if (Tower.distance(bloon.rect.center, self.rect.center) <
                             self.range) and bloon.slowed == False:
                         group.add(bloon) #SZ: if the bloon is in the range of the tower and is not slowed, adds to group of bloons that can be shot 
-                else: #SZ: non gluegunner towers 
+                else: #SZ: non aucoin towers 
                 #everything else will target bloons in its range
                     if (Tower.distance(bloon.rect.center, self.rect.center) <
                                 self.range):
@@ -188,7 +188,7 @@ class Tower(pygame.sprite.Sprite):#SZ: creates a class for the tower objects
             #calculate which bloon is closest to the end of the map in group
 
             if furthest != None: #SZ: a bloon can be shot by this tower 
-                if self.name != "sniper" and self.name != "sniper_upgraded": #SZ: if not a sniper tower
+                if self.name != "kamkar" and self.name != "kamkar_upgraded": #SZ: if not a kamkar tower
                     if player.game != "map2": #SZ: map 1 
                         if furthest.rect.centery >= 0: #SZ: checks if the further bloon is still within the y boundary (exit is based on y position)
                             player.bullets.add(Bullet(self, furthest)) #SZ: adds a bullet object, newly created based on the tower and the furthest bloon

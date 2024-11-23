@@ -4,7 +4,7 @@ player = Player() #MW:creates an instance of the player class
 
 towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dictionary) that stores information about the stats of each type of monkey 
     #cooldown in seconds, range is radius around monkey
-    "dartmonkey": #MW: information for the dart monkey tower
+    "hamilton": #MW: information for hamilton
         {
         "price": 250, #MW: price of the tower
         "upgrade_price": 200, #MW: price to upgrade the tower
@@ -12,10 +12,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 1, #MW: damage each bullet of the monkey does to bloons
         "slow": 0, #MW: how much the monkey slows the bloons down when it hits them
         "range": 125, #MW: radius of the moneky's range (circle that represents where the monkey can attack)
-        "bullet": "basketball", #MW: the kind of object the monkey uses as a bullet (in this case the monkey throws basketballs)
+        "bullet": "calculator", #MW: the kind of object the monkey uses as a bullet (in this case the prof throws calculators)
         "description": "Cheap starting tower" #MW: description of the monkey (appears when you hover over it in the side bar)
         },
-    "ninjamonkey": #MW: information for the ninja monkey
+    "azevedo": #MW: information for azevedo
         {
         "price": 600, 
         "cooldown": 0.3, 
@@ -23,10 +23,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 1, 
         "slow": 0, 
         "range": 175,
-        "bullet": "shuriken",
-        "description": "Fast shuriken shooter"
+        "bullet": "starfish",
+        "description": "Fast starfish shooter"
         },
-    "boat": #MW: information for the boat 
+    "tam": #MW: information for the tam 
         {
         "price": 700, 
         "cooldown": 0.5, 
@@ -37,7 +37,7 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "bullet": "bomb",
         "description": "Only place in water"
         },
-    "sniper": #MW: information for the sniper
+    "kamkar": #MW: information for kamkar
         {
         "price": 500, 
         "cooldown": 1.0,
@@ -45,10 +45,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 2, 
         "slow": 0, 
         "range": 10000,
-        "bullet": "ball",
+        "bullet": "nanomaterial",
         "description": "Huge range; pops 4 layers"
         },
-    "gluegunner": #MW: information for the glue gunner
+    "aucoin": #MW: information for aucoin
         {
         "price": 300, 
         "cooldown": 1.2, 
@@ -56,10 +56,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 0, 
         "slow": 1,
         "range": 175,
-        "bullet": "glue",
-        "description": "Slows bloons with glue"
+        "bullet": "soap",
+        "description": "Slows bloons with soap"
         },
-    "supermonkey": #MW: information for the super monkey
+    "pendar": #MW: information for pendar
         {
         "price": 3500, 
         "cooldown": 0.001,
@@ -67,12 +67,12 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 1,
         "slow": 0,
         "range": 225,
-        "bullet": "ball",
+        "bullet": "matrix",
         "description": "Shoots super fast lasers"
         },
 
     #upgraded monkeys    
-    "dartmonkey_upgraded": #MW: information for the upgraded version of the dart monkey
+    "hamilton_upgraded": #MW: information for the upgraded version of hamilton
         {
         #range increased, cooldown reduced
         "price": 450,
@@ -81,10 +81,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 1, 
         "slow": 0, 
         "range": 150,
-        "bullet": "basketball",
+        "bullet": "calculator",
         "description": "Cheap starting tower"
         },
-    "ninjamonkey_upgraded": #MW: information for the upgraded version of the ninja monkey
+    "azevedo_upgraded": #MW: information for the upgraded version of azevedo
         {
         #damage increased, range increased, cooldown reduced
         "price": 1100,
@@ -93,10 +93,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 2, 
         "slow": 0, 
         "range": 200,
-        "bullet": "shuriken",
-        "description": "Fast shuriken shooter"
+        "bullet": "starfish",
+        "description": "Fast starfish shooter"
         },
-    "boat_upgraded": #MW: information for the upgraded version of the boat
+    "tam_upgraded": #MW: information for the upgraded version of the tam
         {
         #cooldown reduced
         "price": 1000,
@@ -108,7 +108,7 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "bullet": "bomb",
         "description": "Only place in water"
         },
-    "sniper_upgraded": #MW: information for the upgraded version of the sniper
+    "kamkar_upgraded": #MW: information for the upgraded version of kamkar
         {
         #cooldown reduced, damage increased
         "price": 1000,
@@ -117,10 +117,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 4, 
         "slow": 0, 
         "range": 10000,
-        "bullet": "ball",
+        "bullet": "nanomaterial",
         "description": "Huge range; pops 4 layers"
         },
-    "gluegunner_upgraded": #MW: information for the upgraded version of the glue gunner
+    "aucoin_upgraded": #MW: information for the upgraded version of the aucoin
         {
         #cooldown reduced, range increased
         "price": 600,
@@ -129,10 +129,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 0, 
         "slow": 1,
         "range": 200,
-        "bullet": "glue",
-        "description": "Slows bloons with glue"
+        "bullet": "soap",
+        "description": "Slows bloons with soap"
         },
-    "supermonkey_upgraded": #MW: information for the upgraded version of the super monkey
+    "pendar_upgraded": #MW: information for the upgraded version of pendar
         {
         #damage increased, range increased
         "price": 6500,
@@ -141,7 +141,7 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "damage": 2,
         "slow": 0,
         "range": 275,
-        "bullet": "ball",
+        "bullet": "matrix",
         "description": "Shoots super fast lasers"
         }
 }
@@ -280,10 +280,10 @@ class Coord(object): #MW: create a class containing waypoints for each map (wayp
     ((301,488), (526,581))
     ]
 
-    #coordinates that the boat can be placed in
-    boatValues = [(0,458), (300,596)] #MW: list of lists that contain coordinates that the boat can be placed on in the first map
+    #coordinates that tam can be placed in
+    tamValues = [(0,458), (300,596)] #MW: list of lists that contain coordinates that tam can be placed on in the first map
 
-    boatValues2 = [(310,48), (514,165)] #MW: list of lists that contain coordinates that the boat can be placed on in the second map
+    tamValues2 = [(310,48), (514,165)] #MW: list of lists that contain coordinates that tam can be placed on in the second map
 
     #music button coordinates
     music = [(917, 953), (536, 572)] #MW: list of lists that contain coordinates for the music button

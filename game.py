@@ -51,15 +51,15 @@ class Game(object): #MW: create a class for the game
 
             #creates bullet if monkey is not on cooldown
             for monkey in player.towers:
-                if "sniper" in monkey.name:
+                if "kamkar" in monkey.name:
                     monkey.shootBloons() #MW: calls the shootBloons function for the monkey on the field to check if the monkey can shoot a bloon
                     if monkey.ready:
                         bloon = Tower.furthestBloon(player.spriteBloons) #MW: if the monkey's cooldown is finished, the targetted bloon becomes the bloon closest to the end of the map
                         if bloon != None: #MW: run if such bloon exists
-                            sniperStrength = towerTypes[monkey.name]["damage"] #MW: finds the strength of the tower by looking up the name of the tower and its damage value in the TowerTypes dictionary
-                            bloon.updateDamage(sniperStrength,0,player.screen) #MW: damage the bloon and check if it has been destroyed (if it has been destroyed it will be remobed from the screen)
+                            kamkarStrength = towerTypes[monkey.name]["damage"] #MW: finds the strength of the tower by looking up the name of the tower and its damage value in the TowerTypes dictionary
+                            bloon.updateDamage(kamkarStrength,0,player.screen) #MW: damage the bloon and check if it has been destroyed (if it has been destroyed it will be remobed from the screen)
                 else:
-                    monkey.shootBloons() #MW: if the monkey isn't a sniper, it just calls the shootBloons function for the monkey on the field to check if the monkey can shoot a bloon and allows it to shoot bullets at a bloon if it can
+                    monkey.shootBloons() #MW: if the monkey isn't a kamkar, it just calls the shootBloons function for the monkey on the field to check if the monkey can shoot a bloon and allows it to shoot bullets at a bloon if it can
 
             #updates bullets (make them move toward targets)
             for bullet in player.bullets:
