@@ -69,8 +69,8 @@ class Bloon(pygame.sprite.Sprite): #SZ: creates class for the bloons
             if self.strength <= bloons["pink"]["strength"]: #SZ: If the current strength of the bloon is less than or equal the strength of the pink bloon 
                 self.color = bloonColors[self.strength] #SZ: changes color based on current strength 
             if self.strength > bloons["pink"]["strength"]: #SZ: if its greater than the strength of the pink bloon
-                if self.strength <= bloons["ceramic"]["strength"]: #SZ: if current strength is less than or equal the strength of ceramic bloon  
-                    self.color = "ceramic" #SZ: color is ceramic 
+                if self.strength <= bloons["hardhat"]["strength"]: #SZ: if current strength is less than or equal the strength of hardhat bloon  
+                    self.color = "hardhat" #SZ: color is hardhat 
                 elif self.strength <= bloons["moab"]["strength"]: #SZ: if current strength is less than or equal strength of the moab 
                     self.color = "moab" #SZ: color is moab 
             self.image = pygame.image.load('images/%s.png' % self.color)#SZ: loads new image based on new color 
