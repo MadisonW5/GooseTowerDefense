@@ -214,39 +214,39 @@ class Coord(object): #MW: create a class containing waypoints for each map (wayp
 
     #hardcoded waypoint values for map 1
     waypoints = { #MW: dictionary containing all waypoints for the first map, range is used to create a set of coordinates
-    1: (range(173-3,173+4), "left"), #MW: for example, the first waypoint's x coordinate is within the range of 173-3 to 173+4 and the bloon should be facing left when its x coordinate is within that range (in game.py the x coordinate is compared to these values because going left is in the x direction)
-    2: (range(616-3,616+4),"up"), #MW: in this gas, the second waypoint's y coordinate is within the range of 616-3 ot 616+4 and the bloon should be facing up when its y coordinate is within that range (in game.py the y coordinate is compared to these values because going up is in the y direction)
-    3: (range(100-3,100+4), "left"),
-    4: (range(92-3,92+4), "down"),
-    5: (range(300-3,300+4), "right"),
-    6: (range(200-3,200+4), "up"),
-    7: (range(212-3,212+4), "right"),
-    8: (range(299-3,299+4),"down"),
-    9: (range(300-3,300+4), "right"),
-    10: (range(400-3,400+4), "up"),
-    11: (range(210-3,210+4), "right"),
-    12: (range(502-3,502+4), "down"),
-    13: (range(398-3,398+4), "right"),
-    14: (range(620-3,620+4), "up"),
-    15: (range(278-3,278+4), "right"),
-    16: (range(742-3,742+4), "down"),
-    17: (range(483-3,483+4), "left"),
-    18: (range(379-3,379+4), "up"),
-    19: (range(401-3,401+4), "left")}
+    1: (range(173-3,173+4), "left", -90), #MW: for example, the first waypoint's x coordinate is within the range of 173-3 to 173+4 and the bloon should be facing left when its x coordinate is within that range (in game.py the x coordinate is compared to these values because going left is in the x direction)
+    2: (range(616-3,616+4),"up",-90), #MW: in this gas, the second waypoint's y coordinate is within the range of 616-3 ot 616+4 and the bloon should be facing up when its y coordinate is within that range (in game.py the y coordinate is compared to these values because going up is in the y direction)
+    3: (range(100-3,100+4), "left",90),
+    4: (range(92-3,92+4), "down",90),
+    5: (range(300-3,300+4), "right",90),
+    6: (range(200-3,200+4), "up",90),
+    7: (range(212-3,212+4), "right",-90),
+    8: (range(299-3,299+4),"down",90),
+    9: (range(300-3,300+4), "right",90),
+    10: (range(400-3,400+4), "up",90),
+    11: (range(210-3,210+4), "right",-90),
+    12: (range(502-3,502+4), "down",-90),
+    13: (range(398-3,398+4), "right",90),
+    14: (range(620-3,620+4), "up",90),
+    15: (range(278-3,278+4), "right",-90),
+    16: (range(742-3,742+4), "down",-90),
+    17: (range(483-3,483+4), "left",-90),
+    18: (range(379-3,379+4), "up",-90),
+    19: (range(401-3,401+4), "left",90)}
 
     waypoints2 = { #MW: dictionary of waypoints for the second map
-    1: (range(277-3, 277+4), "down"),
-    2: (range(197-3, 197+4), "right"),
-    3: (range(551-3, 551+4), "up"),
-    4: (range(38-3, 38+4), "right"),
-    5: (range(792-3, 792+4), "down"),
-    6: (range(564-3, 564+4), "left"),
-    7: (range(550-3, 550+4), "up"),
-    8: (range(461-3, 461+4), "left"),
-    9: (range(275-3, 275+4), "down"),
-    10: (range(566-3, 566+4), "left"),
-    11: (range(31-3, 31+4), "up"),
-    12: (range(88-3, 88+4), "left")
+    1: (range(277-3, 277+4), "down",-90),
+    2: (range(197-3, 197+4), "right",90),
+    3: (range(551-3, 551+4), "up",90),
+    4: (range(38-3, 38+4), "right",-90),
+    5: (range(792-3, 792+4), "down",-90),
+    6: (range(564-3, 564+4), "left",-90),
+    7: (range(550-3, 550+4), "up"-90),
+    8: (range(461-3, 461+4), "left",90),
+    9: (range(275-3, 275+4), "down",90),
+    10: (range(566-3, 566+4), "left",-90),
+    11: (range(31-3, 31+4), "up",-90),
+    12: (range(88-3, 88+4), "left",90)
     }
 
     #coordinates that monkeys can be placed in
