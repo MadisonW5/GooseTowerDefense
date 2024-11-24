@@ -178,21 +178,25 @@ class Game(object): #MW: create a class for the game
                         if x in Coord.waypoints[bloon.waypoint + 1][0]: #MW: using a directory of waypoints, check if the x coordinate of the bloon is within a range of points that depends on the location of the bloon in relation to other waypoints and the map
                             bloon.waypoint += 1 #MW: the waypoint being looked at is changed to the next one (the next range of points for the next waypoint will be looked at next time)
                             bloon.direction = Coord.waypoints[bloon.waypoint][1] #MW: the bloon faces the corresponding direction (the dictionary full of hard coded waypoints helps the bloon change directions depending on where the turns in the path are on the map)
+                            bloon.rotateImage()
                     elif bloon.direction == 'down':
                         bloon.move(0, speed) #MW: if the bloon is facing down, the bloon only moves down in the y direction
                         if y in Coord.waypoints[bloon.waypoint + 1][0]: #MW: using a directory of waypoints, check if the y coordinate of the bloon is within a range of points that depends on the location of the bloon in relation to other waypoints and the map
                             bloon.waypoint += 1 #MW: the waypoint being looked at is changed to the next one (the next range of points for the next waypoint will be looked at next time)
                             bloon.direction = Coord.waypoints[bloon.waypoint][1] #MW: the bloon faces the corresponding direction (the dictionary full of hard coded waypoints helps the bloon change directions depending on where the turns in the path are on the map)
+                            bloon.rotateImage()
                     elif bloon.direction == 'left':
                         bloon.move(- speed, 0) #MW: if the bloon is facing left, the bloon only moves left in the x direction
                         if x in Coord.waypoints[bloon.waypoint + 1][0]: #MW: using a directory of waypoints, check if the x coordinate of the bloon is within a range of points that depends on the location of the bloon in relation to other waypoints and the map
                             bloon.waypoint += 1 #MW: the waypoint being looked at is changed to the next one (the next range of points for the next waypoint will be looked at next time)
                             bloon.direction = Coord.waypoints[bloon.waypoint][1]
+                            bloon.rotateImage()
                     elif bloon.direction == 'up':
                         bloon.move(0, - speed) #MW: if the bloon is facing up, the bloon only moves up in the y direction
                         if y in Coord.waypoints[bloon.waypoint + 1][0]: #MW: using a directory of waypoints, check if the y coordinate of the bloon is within a range of points that depends on the location of the bloon in relation to other waypoints and the map
                             bloon.waypoint += 1 #MW: the waypoint being looked at is changed to the next one (the next range of points for the next waypoint will be looked at next time)
                             bloon.direction = Coord.waypoints[bloon.waypoint][1] #MW: the bloon faces the corresponding direction (the dictionary full of hard coded waypoints helps the bloon change directions depending on where the turns in the path are on the map)
+                            bloon.rotateImage()
 
             elif player.game == "map2": #MW: run if the current map is "map 2"
                 lastWaypoint = 12 #MW: there are 12 waypoints before the end of the map
@@ -211,6 +215,7 @@ class Game(object): #MW: create a class for the game
                         if x in Coord.waypoints2[bloon.waypoint + 1][0]: #MW: using a directory of waypoints, check if the x coordinate of the bloon is within a range of points that depends on the location of the bloon in relation to other waypoints and the map
                             bloon.waypoint += 1 #MW: the waypoint being looked at is changed to the next one (the next range of points for the next waypoint will be looked at next time)
                             bloon.direction = Coord.waypoints2[bloon.waypoint][1] #MW: the bloon faces the corresponding direction (the dictionary full of hard coded waypoints helps the bloon change directions depending on where the turns in the path are on the map)
+
                     elif bloon.direction == 'down':
                         bloon.move(0, speed) #MW: if the bloon is facing down, the bloon only moves down in the y direction
                         if y in Coord.waypoints2[bloon.waypoint + 1][0]: #MW: using a directory of waypoints, check if the y coordinate of the bloon is within a range of points that depends on the location of the bloon in relation to other waypoints and the map

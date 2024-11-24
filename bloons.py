@@ -11,7 +11,7 @@ class Bloon(pygame.sprite.Sprite): #SZ: creates class for the bloons
         self.rect = self.image.get_rect() #SZ: creates rect object based on dimensions of the image 
         self.rect.center = [738,-50] #SZ: sets center of the rect object 
         self.pop = pygame.image.load('images/pop.png') #pop animation
-
+        self.originalImage = pygame.image.load('images/%s.png' % color)
         self.strength = bloons[self.color]["strength"] #SZ: sets the strength (health) associated with the bloon based on color in the dictionary 
         self.slowed = False #SZ: default condition, bloon is not slowed 
         self.speed = bloons[self.color]["speed"] #SZ: sets the speed associated with the bloon based on color in the dictionary 
@@ -23,9 +23,13 @@ class Bloon(pygame.sprite.Sprite): #SZ: creates class for the bloons
         self.waypoint = 0 #SZ: sets current waypoint to zero 
         if player.game == "map1":
             self.direction = 'down' #SZ: starts by heading down 
+            #SZ: I CODED THIS: rotates the image (we used new image for the geese)
+            self.rotateImage() 
             self.rect.center = [738,-50] #starting point
         elif player.game == "map2": 
             self.direction = 'right' #SZ: starts by heading right 
+            #SZ: I CODED THIS: rotates the image (we used new image for the geese)
+            self.rotateImage() 
             self.rect.center = [-50,38] #starting point
 
     def __str__(self): #SZ: this function defines the string representation of itself
@@ -74,10 +78,26 @@ class Bloon(pygame.sprite.Sprite): #SZ: creates class for the bloons
                 elif self.strength <= bloons["wrench"]["strength"]: #SZ: if current strength is less than or equal strength of the wrench 
                     self.color = "wrench" #SZ: color is wrench 
             self.image = pygame.image.load('images/%s.png' % self.color)#SZ: loads new image based on new color 
-
+            self.originalImage = pygame.image.load('images/%s.png' % self.color)#SZ: loads new image based on new color 
             if self.slowed != True: #SZ: if slowed
                 #we only want to update the speed if the bloon is not slowed
                 self.speed = bloons[self.color]["speed"] #SZ: updates speed if not slowed 
+            self.rotateImage() 
+          
+
+    #SZ: I coded. This function rotates the image of the object to match the direction. Since in the original the images stayed the same and we're using geese now. 
+    def rotateImage(self):
+        currentdirection = self.direction
+        if currentdirection == "right": 
+            self.image = pygame.transform.rotozoom(self.originalImage, 0, 1)
+        elif currentdirection == "left":
+            self.image = pygame.transform.rotozoom(self.originalImage, 180, 1)
+        elif currentdirection == "up": 
+            self.image = pygame.transform.rotozoom(self.originalImage, 90, 1)
+        elif currentdirection == "down": 
+            self.image = pygame.transform.rotozoom(self.originalImage, 270, 1)
+
+
 
 class Levels(object): #SZ: creates a level class
 
