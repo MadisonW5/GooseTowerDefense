@@ -235,18 +235,18 @@ class Coord(object): #MW: create a class containing waypoints for each map (wayp
     19: (range(401-3,401+4), "left")}
 
     waypoints2 = { #MW: dictionary of waypoints for the second map
-    1: (range(277-3, 277+4), "down",-90),
-    2: (range(197-3, 197+4), "right",90),
-    3: (range(551-3, 551+4), "up",90),
-    4: (range(38-3, 38+4), "right",-90),
-    5: (range(792-3, 792+4), "down",-90),
-    6: (range(564-3, 564+4), "left",-90),
-    7: (range(550-3, 550+4), "up",-90),
-    8: (range(461-3, 461+4), "left",90),
-    9: (range(275-3, 275+4), "down",90),
-    10: (range(566-3, 566+4), "left",-90),
-    11: (range(31-3, 31+4), "up",-90),
-    12: (range(88-3, 88+4), "left",90)
+    1: (range(277-3, 277+4), "down"),
+    2: (range(197-3, 197+4), "right"),
+    3: (range(551-3, 551+4), "up"),
+    4: (range(38-3, 38+4), "right"),
+    5: (range(792-3, 792+4), "down"),
+    6: (range(564-3, 564+4), "left"),
+    7: (range(550-3, 550+4), "up"),
+    8: (range(461-3, 461+4), "left"),
+    9: (range(275-3, 275+4), "down"),
+    10: (range(566-3, 566+4), "left"),
+    11: (range(31-3, 31+4), "up"),
+    12: (range(88-3, 88+4), "left")
     }
 
     #coordinates that monkeys can be placed in
