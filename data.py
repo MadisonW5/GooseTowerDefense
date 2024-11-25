@@ -183,6 +183,11 @@ bloons = { #MW: another nested dictionary that holds the stats of each kind of b
         "strength": 350,
         "speed": 1,
         },
+    "uoft": #SZ: new uoft boss created by me :D 
+        {
+        "strength": 500,
+        "speed": 1,
+        },
 }
 
 bloonColors = { #MW: dictionary holding the names of all colours of bloons (excluding hardhat and wrench)
@@ -207,7 +212,17 @@ levels = { #MW: a dictionary containing lists that contain information for each 
     (7, "hardhat"), (15, "pink")],
     9: [(50, "blue"), (10, "hardhat"), (20, "pink"), 
     (30, "yellow"), (15, "pink")],
-    10: [(1, "wrench"), (10, "hardhat")]
+    10: [(1, "wrench"), (10, "hardhat")], #SZ: new changes for more levels by me :D 
+    11: [(15, "hardhat"), (30, "pink")],
+    12: [(1, "wrench"), (30, "pink"), (10, "hardhat")],
+    13: [(2, "wrench"), (20, "hardhat")],
+    14: [(40, "hardhat"), (30, "pink"), (30, "yellow")],
+    15: [(1, "uoft"), (2, "wrench"), (10, "hardhat")],
+    16: [(50, "hardhat"), (50, "pink")],
+    17: [(1, "uoft"), (3, "wrench")],
+    18: [(5, "wrench"), (15, "hardhat"), (50, "pink")],
+    19: [(5, "wrench"), (50, "hardhat")],
+    20: [(3, "uoft"), (20, "hardhat"), (3, "wrench")]
 }
 
 class Coord(object): #MW: create a class containing waypoints for each map (waypoints tell the bloons what direction to face so they can follow the path of the map)

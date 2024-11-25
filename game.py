@@ -43,7 +43,9 @@ class Game(object): #MW: create a class for the game
         self.nightcount = 0 #MW: I ADDED THIS - create a variable to keep track of the time between night levels
         pygame.init() #MW: initializes all pygame modules (needed to set up game window, fonts, music, etc.)
 
-        pygame.mixer.music.load('btd_theme.ogg') #MW: load the music file from the module
+        #SZ: updated the music (royalty free music from 100% orange juice (that is a game))
+        pygame.mixer.music.load('100orangejuice.mp3') #MW: load the music file from the module
+        pygame.mixer.music.set_volume(0.1)
         pygame.mixer.music.play(-1) #-1 means play forever #MW: play the background music forever
 
     def initializeMap(self):
@@ -72,15 +74,27 @@ class Game(object): #MW: create a class for the game
     def timeOfDay(self):
         isNight = random.choice([True,False,False,False]) #MW: use the random module and list of Booleans to randomly decide whether a level will take place at night (there's a 25% chance of any level being night)
         self.nighttime = isNight
-    
+
         if isNight: #MW: run if it's night time
             self.nightcount = 0 #MW: it's been night
 
-        elif isNight == False:
+            #SZ: next 3 lines are mine :) 
+            for monkey in player.towers: 
+                monkey.range = monkey.range - 50 #SZ: nerfs range by 50 during the night "can't see + tired"
+                monkey.cooldown = monkey.cooldown*1.5 #SZ: nerfs cooldown (time between attacks) by a 1.5 multiplier 
+        
+
+        elif isNight == False: 
             self.nightcount += 1
             if self.nightcount == 3: #MW: run if it's been three levels without a night level
                 self.nighttime = True #MW: make it a night level
                 self.nightcount = 0 #MW: it's been 0 levels since a night time level
+            #SZ: next 3 lines are mine 
+            for monkey in player.towers:  
+                monkey.cooldown = towerTypes[monkey.name]["cooldown"] #SZ: makes sure that the cooldown is the proper cooldown/range after the night 
+                monkey.range = towerTypes[monkey.name]["range"]
+        
+        
         
     def pressedButton(self, x, y): #MW: create a function that allows the player to click buttons on the screen
 
@@ -89,15 +103,17 @@ class Game(object): #MW: create a class for the game
             #only start next level when player just started, or completed level
             if player.spriteBloons == None or len(player.spriteBloons) == 0: #MW: checks if all bloons are gone or if none existed to begin with
                 player.level += 1 #MW: after the player has just started the game or just completed a level, the next level will begin
-                if player.level < 11:
+                #SZ: next line small change for more levels 
+                if player.level < 21: 
                     player.spriteBloons = Levels.runLevel(player.level) #MW: if the player hasn't finished playing all of the levels, the bloon sprites will be generated based on the current level
                     self.timeOfDay() #MW: check what time of day it is (MADISON ADDED THIS)
                     #MW: MADISON ADDED THESE LINES (gives the player money after they progress to another level)
                     if player.level > 1:
                         player.money += 100 #MW: add $100 to player's money after beating a level (MADISON ADDED THIS)
                 else:
-                    player.level = 10
-                    player.gameWon = True #MW: if the player has made it to level 10, the game has been won
+                    #SZ: next line small change for more levels 
+                    player.level = 20 
+                    player.gameWon = True #MW: if the player has made it to level 20, the game has been won
                     #MW: MADISON ADDED THE LINES BELOW (the reset the night variables after the game has been won)
                     self.nightcount = 0 #MW: reset night couner to zero after winning
                     self.nighttime = False #MW: reset night time variable after winning
@@ -301,7 +317,8 @@ class Game(object): #MW: create a class for the game
         moneyPos = money.get_rect() #MW: get a rectangle that defines the boundaries of where the money text is placed on screen
         moneyPos.center = (890, 30) #MW: set the centre of the lives text to the coordinates (890, 30)
 
-        levelNumber = levelFont.render("Level %d/10" % player.level, 1, white) #MW: make the text that displays the current level number use the level font with a white colour
+        #SZ: next line small change for more levels, replaced /10 to /20 
+        levelNumber = levelFont.render("Level %d/20" % player.level, 1, white) #MW: make the text that displays the current level number use the level font with a white colour
         levelNumberPos = levelNumber.get_rect() #MW: get a rectangle that defines the boundaries of where the current level text is placed on screen
         levelNumberPos.center = (890, 120) #MW: set the centre of the lives text to the coordinates (890, 120)
 
@@ -453,6 +470,7 @@ class Game(object): #MW: create a class for the game
                 self.drawPrices() #MW: draw the price of the monkeys on the screen (if they're hovered over with the mouse)
                 for event in pygame.event.get(): #MW: use for loop to check all events that are happening
                     if event.type == pygame.MOUSEBUTTONDOWN: #MW: check if the player clicked the mouse button
+                        #MW: changed tutorial page to 8 since there's a new tutorial slide
                         if self.tutorialPage == 8: #MW: check if the player has made it to the last step of the tutorial
                             self.tutorial = False
                             self.splashScreenActive = True #MW: the tutorial ends and the main menu is shown on screen again

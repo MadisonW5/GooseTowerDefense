@@ -4,7 +4,7 @@ import pygame
 class Player(pygame.sprite.Sprite): #MW: create class for the player
 
     def __init__(self): #MW: create instance for the player's stats (ex. money availble, health, level, etc.)
-        self.money = 5000 #MW: set the player's initial money to 5000
+        self.money = 50000 #MW: set the player's initial money to 5000
         self.lives = 100 #MW: set the player's initial health to 100
         self.level = 0 #MW: set the player's initial level to 0
         self.start = False #MW: the game has not started at the beginning (the main menu is open at the start)
@@ -23,7 +23,8 @@ class Player(pygame.sprite.Sprite): #MW: create class for the player
                 bloon.speed = 0 #MW: if the game is over, all bloons stop moving (the game stops)
 
     def checkGameWon(self, group): #MW: create a function that checks if the game has been won
-        if self.level == 10 and len(group) == 0: #no bloons left in level 10
+        #SZ: next line small change for more levels, changed self.level == 10 to 20
+        if self.level == 20 and len(group) == 0: #no bloons left in level 20
             self.gameWon = True
         #MW: if no bloons are left in level 10 (the last level) the player wins the game
 
