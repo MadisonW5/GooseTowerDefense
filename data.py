@@ -62,11 +62,11 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
     "pendar": #MW: information for pendar
         {
         "price": 3500, 
-        "cooldown": 0.001,
+        "cooldown": 0.01, #original = 0.001
         "upgrade_price": 2000,
         "damage": 1,
         "slow": 0,
-        "range": 225,
+        "range": 200, #original = 225
         "bullet": "matrix",
         "description": "Shoots super fast lasers"
         },
@@ -137,10 +137,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         #damage increased, range increased
         "price": 6500,
         "upgrade_price": 2000,
-        "cooldown": 0.001,
+        "cooldown": 0.01,
         "damage": 2,
         "slow": 0,
-        "range": 275,
+        "range": 250, #original 275
         "bullet": "matrix",
         "description": "Shoots super fast lasers"
         }

@@ -4,7 +4,7 @@ import pygame
 class Player(pygame.sprite.Sprite): #MW: create class for the player
 
     def __init__(self): #MW: create instance for the player's stats (ex. money availble, health, level, etc.)
-        self.money = 600 #MW: set the player's initial money to 600
+        self.money = 5000 #MW: set the player's initial money to 5000
         self.lives = 100 #MW: set the player's initial health to 100
         self.level = 0 #MW: set the player's initial level to 0
         self.start = False #MW: the game has not started at the beginning (the main menu is open at the start)

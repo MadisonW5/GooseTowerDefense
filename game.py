@@ -5,6 +5,7 @@ from bloons import Levels
 from towers import Tower
 from player import Player, Music
 from data import Coord, towerTypes, player
+import random #MW: MADISON ADDED THIS - import random function to randomize which levels take place at night
 
 """
 Citations:
@@ -37,7 +38,9 @@ class Game(object): #MW: create a class for the game
         self.width = width
         self.height = height
         self.fps = fps
-        self.title = "Bloons Tower Defense 112: By Sarah Wang"
+        self.title = "Goose Tower Defense: By Samuel Zhu and Madison Wong" #MW: MADISON CHANGED THIS - I changed the title of the game window
+        self.nighttime = False #MW: I ADDED THIS - create a variable that changes depending on if the level takes place at night
+        self.nightcount = 0 #MW: I ADDED THIS - create a variable to keep track of the time between night levels
         pygame.init() #MW: initializes all pygame modules (needed to set up game window, fonts, music, etc.)
 
         pygame.mixer.music.load('btd_theme.ogg') #MW: load the music file from the module
@@ -64,7 +67,21 @@ class Game(object): #MW: create a class for the game
             #updates bullets (make them move toward targets)
             for bullet in player.bullets:
                 bullet.update(player.screen) #MW: moves the bullets across the screen and towards the targetted bloons
+    
+    #MW: MADISON made this function (to randomly make the level night time)
+    def timeOfDay(self):
+        isNight = random.choice([True,False,False,False]) #MW: use the random module and list of Booleans to randomly decide whether a level will take place at night (there's a 25% chance of any level being night)
+        self.nighttime = isNight
+    
+        if isNight: #MW: run if it's night time
+            self.nightcount = 0 #MW: it's been night
 
+        elif isNight == False:
+            self.nightcount += 1
+            if self.nightcount == 3: #MW: run if it's been three levels without a night level
+                self.nighttime = True #MW: make it a night level
+                self.nightcount = 0 #MW: it's been 0 levels since a night time level
+        
     def pressedButton(self, x, y): #MW: create a function that allows the player to click buttons on the screen
 
         #pressed start button
@@ -74,9 +91,16 @@ class Game(object): #MW: create a class for the game
                 player.level += 1 #MW: after the player has just started the game or just completed a level, the next level will begin
                 if player.level < 11:
                     player.spriteBloons = Levels.runLevel(player.level) #MW: if the player hasn't finished playing all of the levels, the bloon sprites will be generated based on the current level
+                    self.timeOfDay() #MW: check what time of day it is (MADISON ADDED THIS)
+                    #MW: MADISON ADDED THESE LINES (gives the player money after they progress to another level)
+                    if player.level > 1:
+                        player.money += 100 #MW: add $100 to player's money after beating a level (MADISON ADDED THIS)
                 else:
                     player.level = 10
                     player.gameWon = True #MW: if the player has made it to level 10, the game has been won
+                    #MW: MADISON ADDED THE LINES BELOW (the reset the night variables after the game has been won)
+                    self.nightcount = 0 #MW: reset night couner to zero after winning
+                    self.nighttime = False #MW: reset night time variable after winning
 
         #pressed monkey sidebar
         if x > 825 and x < 950 and y > 140 and y < 380: #MW: checks if the player clicked a coordinate in the area of the monkey sidebar
@@ -95,6 +119,9 @@ class Game(object): #MW: create a class for the game
         #pressed home button
         if x > 840 and x < 872 and y > 538 and y < 568:
             self.splashScreenActive = True #MW: if coordinates within the home button are pressed, the main menu screen is displayed again
+            #MW: MADISON ADDED THESE LINES (to reset night variables if player goes back to the home screen)
+            self.nightcount = 0
+            self.nighttime = False #MW: resets night count and night time variables
 
         #place a monkey onto the canvas
         if player.selectedTower != None:
@@ -156,8 +183,12 @@ class Game(object): #MW: create a class for the game
     #makes bloons move across map
     def moveBloons(self, bloonsList):
         for bloon in bloonsList:
+            #MW: MADISON added the if and else statements to control speed (most geese move faster during night time)
+            if self.nighttime and bloon.color != 'pink' and bloon.color != 'yellow': #MW: if it's a night level all geese except for pink and yellow ones will move faster (pink and yellow geese are already fast enough)
+                speed = bloon.speed + 2
+            else: #MW: the regular speed for the geese are used if it's not night time
+                speed = bloon.speed #MW: the speed of each bloon in the bloon list is collected
 
-            speed = bloon.speed #MW: the speed of each bloon in the bloon list is collected
             x = bloon.rect.centerx
             y = bloon.rect.centery #MW: the x and y coordinates of each bloon are set to the centres of each bloon
 
@@ -167,10 +198,14 @@ class Game(object): #MW: create a class for the game
                     bloon.move(-speed, 0) #MW: if the bloon is at the last waypoint before the end of the map, it stop moving in the y direction and starts moving left in the x direction (at this section of the map, the path requires the bloon to move in this way)
                     if x <= -5: #check if bloon has moved past the map
                         player.lives -= bloon.strength
+                        player.money -= bloon.strengh #MW: MADISON ADDED THIS (every time a goose leaves the map, the player's money is depleted according to the goose's strength)
                         bloon.kill() #MW: the player's health is depleted according to the bloon's strength and the bloon is removed from the map after going off of the screen
                         if player.lives <= 0:
                             player.gameOver = True
                             player.lives = 0 #MW: if the player has run out of lives, the player has lost the game and the player's lives is set to 0 (if a bloon makes the player's health a negative number, the player's health will still end up being zero)
+                            #MW: MADISON ADDED THE LINES BELOW (to reset the night variables if the player lost the game)
+                            self.nightcount = 0 #MW: reset night counter to zero after losing game
+                            self.nighttime = False #MW: reset night time variable after losing game
 
                 else: #MW: this section runs if the bloon hasn't made it to the last waypoint (it's not close to the end of the map yet)
                     if bloon.direction == 'right':
@@ -212,6 +247,9 @@ class Game(object): #MW: create a class for the game
                         if player.lives <= 0:
                             player.gameOver = True
                             player.lives = 0 #MW: if the player runs out of lives, the game is over and the number of lives the player has is set to 0 (if the bloon made the player have a negative number of lives, they will still have zero lives at the end)
+                            #MW: MADISON ADDED THE LINES BELOW (to reset the night variables if the player lost the game)
+                            self.nightcount = 0 #MW: reset night counter to zero after losing game
+                            self.nighttime = False #MW: reset night time variable after losing game
 
                 else: #MW: run if the bloon isn't at the last waypoint
                     if bloon.direction == 'right':
@@ -319,7 +357,25 @@ class Game(object): #MW: create a class for the game
         self.drawAllMonkeys()
         self.drawBullets()
         self.drawPlayerStats() #MW: draw the music button, all monkeys placed on the field, bullets, and the player's stats on the screen
+        
+        #MW: Madison added the lines under (to draw the arrows showing the start and ends of the maps)
+        
+        if player.game == 'map1' and player.level == 0: #MW: check if map 1 is being used and if the level is 0 (start of the game)
+            map1_start = pygame.image.load("images/map1_start.png")
+            map1_start.convert() #MW: "map 1 arrrow" is loaded and converted to decrease render time when drawing the image
+            player.screen.blit(map1_start, (0,0)) #MW: draw the arrow image on the screen at the coordinates (0,0) (top left of screen)
 
+        elif player.game == 'map2' and player.level == 0:  #MW: check if map 2 is being used and if the level is 0 (start of the game)
+            map2_start = pygame.image.load("images/map2_start.png")
+            map2_start.convert() #MW: "map 2 arrow" is loaded and converted to decrease render time when drawing the image
+            player.screen.blit(map2_start, (0,0)) #MW: draw the arrow image on the screen at the coordinates (0,0) (top left of screen))
+        
+        #MW: Madison coded the lines under (to draw the night time overlay on screen)
+        if self.nighttime: #MW: draw the night time overlay on screen if it's night time
+            night_overlay = pygame.image.load("images/night_overlay.png") #MW: import the night time overlay
+            night_overlay.convert() #MW: "night overlay" is loaded and converted to decrease render time when drawing the image
+            player.screen.blit(night_overlay,(0,0)) #draw the night time overlay on screen
+        
     def initializeSplashScreen(self): #MW: create function to draw the main menu on the screen
         self.splashScreen = pygame.image.load("images/splash_screen.png").convert() #MW: get the splash screen image and convert it to the same pixel format of the display screen to reduce rendering time
         player.screen.blit(self.splashScreen, (0,0)) #MW: draw the main menu in the top left of the screen
@@ -434,7 +490,7 @@ class Game(object): #MW: create a class for the game
                         pygame.quit()
                         sys.exit() #MW: if the player wants to quit the game, pygame stops, the screen closes, and the code stops running
 
-            else: #MW: this section rusn if the player isn't on the main menu, tutorial, and hasn't won or lost the game
+            else: #MW: this section runs if the player isn't on the main menu, tutorial, and hasn't won or lost the game
                 self.initializeMap() #MW: draw the map immage on the screen
                 self.timerFired() #MW: draw the monkeys' bullets on screen according to the type of monkey and cooldown time (if applicable to that monkey time)
                 self.moveBloons(player.spriteBloons) #MW: make the bloons move across the screen
