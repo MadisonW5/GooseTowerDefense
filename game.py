@@ -453,7 +453,7 @@ class Game(object): #MW: create a class for the game
                 self.drawPrices() #MW: draw the price of the monkeys on the screen (if they're hovered over with the mouse)
                 for event in pygame.event.get(): #MW: use for loop to check all events that are happening
                     if event.type == pygame.MOUSEBUTTONDOWN: #MW: check if the player clicked the mouse button
-                        if self.tutorialPage == 7: #MW: check if the player has made it to the last step of the tutorial
+                        if self.tutorialPage == 8: #MW: check if the player has made it to the last step of the tutorial
                             self.tutorial = False
                             self.splashScreenActive = True #MW: the tutorial ends and the main menu is shown on screen again
                         else:
