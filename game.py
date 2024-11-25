@@ -198,7 +198,7 @@ class Game(object): #MW: create a class for the game
                     bloon.move(-speed, 0) #MW: if the bloon is at the last waypoint before the end of the map, it stop moving in the y direction and starts moving left in the x direction (at this section of the map, the path requires the bloon to move in this way)
                     if x <= -5: #check if bloon has moved past the map
                         player.lives -= bloon.strength
-                        player.money -= bloon.strengh #MW: MADISON ADDED THIS (every time a goose leaves the map, the player's money is depleted according to the goose's strength)
+                        player.money -= bloon.strength #MW: MADISON ADDED THIS (every time a goose leaves the map, the player's money is depleted according to the goose's strength)
                         bloon.kill() #MW: the player's health is depleted according to the bloon's strength and the bloon is removed from the map after going off of the screen
                         if player.lives <= 0:
                             player.gameOver = True
