@@ -25,4 +25,4 @@ How to install and run GooseTDS
 
 2. Run `python3 game.py`.
 
-Youtube Demo: https://www.youtube.com/watch?v=7ViA74Ddw-k
+
