@@ -1,7 +1,7 @@
 # GooseTowerDefense
 About GooseTowerDefense (GooseTDS), Developed by Samuel Zhu and Madison Wong
 
-The original game that GooseTDS was developed by Sarah Wang named BTD112, for a term project at 
+The original game that GooseTDS was referenced from was developed by Sarah Wang and named BTD112. It was made for a term project at 
 Carnegie Mellon University. BTD112 is based off of BloonsTD5, a tower defense game developed by 
 NinjaKiwi in 2011. GooseTDS is developed in pygame by Samuel Zhu and Madison Wong, for the end of
 term project for CHE120.
@@ -25,4 +25,3 @@ How to install and run GooseTDS
 
 2. Run `python3 game.py`.
 
-Youtube Demo: https://www.youtube.com/watch?v=7ViA74Ddw-k
