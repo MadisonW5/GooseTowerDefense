@@ -14,8 +14,8 @@ import random #MW: MADISON ADDED THIS - import random function to randomize whic
 """
 Citations:
 
-1. Game recreated from and monkey/bloon/map images taken from Bloons Tower 
-    Defense 5 by Ninja Kiwi:
+1. Game recreated from and monkey/map images taken from Bloons Tower 
+    Defense 5 by Ninja Kiwi and then edited:
     http://ninjakiwi.com/Games/Tower-Defense/Bloons-Tower-Defense-5.html
 
 2. Game.run and Game.init function referenced and modified from Lukas Peraza: 
@@ -24,14 +24,16 @@ Citations:
 3. Towers.shootBloons and Bullet.update referenced and modified from Cactusson:
     https://github.com/Cactusson/towers
 
-4. Other game images (basketball, shurikens, bombs, etc) from sources found
+4. Other game images (calculators, hardhat, uoft, goose, bombs, etc) from sources found
     on Google images
 
 5. Basic tutorials and pygame code examples from Pygame.org:
     http://www.pygame.org/hifi.html
 
-6. Splash screen and game over/won screen made with help from Canva application
-    http://www.canva.com
+6. Music taken from 100% Orange Juice, a game made almost entirely with royalty free music. "POPSTAR" by yusuke karino. 
+
+7. Original game developed by Sarah Wang, BTD112
+
 """
 
 class Game(object): #MW: create a class for the game
