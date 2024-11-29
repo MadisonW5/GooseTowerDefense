@@ -1,10 +1,14 @@
+"""
+MW: Madison Wong
+SZ: Samuel Zhu
+"""
 import pygame #MW: import pygame module
 import sys
-from pygame.locals import *
+from pygame.locals import * #MW: import everything from pygame.locals module
 from bloons import Levels
 from towers import Tower
-from player import Player, Music
-from data import Coord, towerTypes, player
+from player import Player, Music #MW: import information from each module so they can be used in this file
+from data import Coord, towerTypes, player #MW: import dictionaries for the tower types and player
 import random #MW: MADISON ADDED THIS - import random function to randomize which levels take place at night
 
 """
@@ -83,7 +87,7 @@ class Game(object): #MW: create a class for the game
                 monkey.range = monkey.range - 50 #SZ: nerfs range by 50 during the night "can't see + tired"
                 monkey.cooldown = monkey.cooldown*1.5 #SZ: nerfs cooldown (time between attacks) by a 1.5 multiplier 
         
-
+        #MW: Madison wrote these lines
         elif isNight == False: 
             self.nightcount += 1
             if self.nightcount == 3: #MW: run if it's been three levels without a night level
