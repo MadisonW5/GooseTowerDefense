@@ -265,7 +265,7 @@ class Coord(object): #MW: create a class containing waypoints for each map (wayp
     }
 
     #coordinates that monkeys can be placed in
-    nonTrackValues = [ #MW: list of lists that contain coordinates that monkeys can be placed on in the first map
+    nonTrackValues = [ #MW: list of tuples that contain coordinates that monkeys can be placed on in the first map
     ((0,0), (706,71)),
     ((774,0), (805,502)),
     ((0,71), (65,371)),
@@ -287,7 +287,7 @@ class Coord(object): #MW: create a class containing waypoints for each map (wayp
     ((0,429), (343,450))
     ]
 
-    nonTrackValues2 = [ #MW: list of lists that contain coordinates that monkeys can be placed on in the second map
+    nonTrackValues2 = [ #MW: list of tuples that contain coordinates that monkeys can be placed on in the second map
     ((58,61), (252,532)),
     ((58,61), (252,532)),
     ((199,224), (630,422)),
@@ -296,9 +296,9 @@ class Coord(object): #MW: create a class containing waypoints for each map (wayp
     ]
 
     #coordinates that tam can be placed in
-    tamValues = [(0,458), (300,596)] #MW: list of lists that contain coordinates that tam can be placed on in the first map
+    tamValues = [(0,458), (300,596)] #MW: list of tuples that contain coordinates that tam can be placed on in the first map
 
-    tamValues2 = [(310,48), (514,165)] #MW: list of lists that contain coordinates that tam can be placed on in the second map
+    tamValues2 = [(310,48), (514,165)] #MW: list of tuples that contain coordinates that tam can be placed on in the second map
 
     #music button coordinates
-    music = [(917, 953), (536, 572)] #MW: list of lists that contain coordinates for the music button
+    music = [(917, 953), (536, 572)] #MW: list of tuples that contain coordinates for the music button
