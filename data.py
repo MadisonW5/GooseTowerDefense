@@ -222,7 +222,7 @@ levels = { #MW: a dictionary containing lists that contain information for each 
     17: [(1, "uoft"), (3, "wrench")],
     18: [(5, "wrench"), (15, "hardhat"), (50, "pink")],
     19: [(5, "wrench"), (50, "hardhat")],
-    20: [(3, "uoft"), (20, "hardhat"), (3, "wrench")]
+    20: [(3, "uoft"), (20, "hardhat"), (3, "wrench")],
 }
 
 class Coord(object): #MW: create a class containing waypoints for each map (waypoints tell the bloons what direction to face so they can follow the path of the map)
