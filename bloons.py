@@ -78,6 +78,8 @@ class Bloon(pygame.sprite.Sprite): #SZ: creates class for the bloons
                     self.color = "hardhat" #SZ: color is hardhat 
                 elif self.strength <= bloons["wrench"]["strength"]: #SZ: if current strength is less than or equal strength of the wrench 
                     self.color = "wrench" #SZ: color is wrench 
+                elif self.strength <= bloons["uoft"]["strength"]:
+                    self.color = "uoft"
             self.image = pygame.image.load('images/%s.png' % self.color)#SZ: loads new image based on new color 
             #SZ: i coded next line
             self.originalImage = pygame.image.load('images/%s.png' % self.color)#SZ: loads original image based on new color 
