@@ -59,6 +59,7 @@ class Bloon(pygame.sprite.Sprite): #SZ: creates class for the bloons
 
         #bloon has died
         if self.strength <= 0:  #SZ: if bloon has no more health 
+            #SZ: next line commented out because we're removing it (no income)
             #player.money += self.originalPrice #SZ: adds money based on the original price (strength*5)
             self.kill() #SZ: removes bloon object 
             return
