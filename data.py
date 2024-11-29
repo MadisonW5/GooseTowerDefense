@@ -11,38 +11,38 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "cooldown": 0.7, #MW: cooldown time for the tower (how long the monkey has to wait before attacking again)
         "damage": 1, #MW: damage each bullet of the monkey does to bloons
         "slow": 0, #MW: how much the monkey slows the bloons down when it hits them
-        "range": 125, #MW: radius of the moneky's range (circle that represents where the monkey can attack)
+        "range": 150, #MW: radius of the moneky's range (circle that represents where the monkey can attack)
         "bullet": "calculator", #MW: the kind of object the monkey uses as a bullet (in this case the prof throws calculators)
         "description": "Cheap starting tower" #MW: description of the monkey (appears when you hover over it in the side bar)
         },
     "azevedo": #MW: information for azevedo
         {
         "price": 600, 
-        "cooldown": 0.3, 
+        "cooldown": 0.25, 
         "upgrade_price": 500,
         "damage": 1, 
         "slow": 0, 
-        "range": 175,
+        "range": 200,
         "bullet": "starfish",
         "description": "Fast starfish shooter"
         },
     "tam": #MW: information for the tam 
         {
         "price": 700, 
-        "cooldown": 0.5, 
+        "cooldown": 0.3, 
         "upgrade_price": 300,
         "damage": 2, 
         "slow": 0, 
-        "range": 250,
+        "range": 300,
         "bullet": "bomb",
         "description": "Only place in water"
         },
     "kamkar": #MW: information for kamkar
         {
         "price": 500, 
-        "cooldown": 1.0,
+        "cooldown": 0.7,
         "upgrade_price": 500,
-        "damage": 2, 
+        "damage": 4, 
         "slow": 0, 
         "range": 10000,
         "bullet": "nanomaterial",
@@ -51,22 +51,22 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
     "aucoin": #MW: information for aucoin
         {
         "price": 300, 
-        "cooldown": 1.2, 
+        "cooldown": 0.6, 
         "upgrade_price": 300,
         "damage": 0, 
         "slow": 1,
-        "range": 175,
+        "range": 200,
         "bullet": "soap",
         "description": "Slows bloons with soap"
         },
     "pendar": #MW: information for pendar
         {
         "price": 3500, 
-        "cooldown": 0.01, #original = 0.001
+        "cooldown": 0.005, #original = 0.001
         "upgrade_price": 2000,
         "damage": 1,
         "slow": 0,
-        "range": 200, #original = 225
+        "range": 225, #original = 225
         "bullet": "matrix",
         "description": "Shoots super fast lasers"
         },
@@ -77,10 +77,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         #range increased, cooldown reduced
         "price": 450,
         "upgrade_price": 200,
-        "cooldown": 0.4, 
-        "damage": 1, 
+        "cooldown": 0.3, 
+        "damage": 2, 
         "slow": 0, 
-        "range": 150,
+        "range": 200,
         "bullet": "calculator",
         "description": "Cheap starting tower"
         },
@@ -92,7 +92,7 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         "cooldown": 0.2, 
         "damage": 2, 
         "slow": 0, 
-        "range": 200,
+        "range": 225,
         "bullet": "starfish",
         "description": "Fast starfish shooter"
         },
@@ -101,10 +101,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         #cooldown reduced
         "price": 1000,
         "upgrade_price": 300,
-        "cooldown": 0.4, 
-        "damage": 2, 
+        "cooldown": 0.25, 
+        "damage": 3, 
         "slow": 0, 
-        "range": 250,
+        "range": 300,
         "bullet": "bomb",
         "description": "Only place in water"
         },
@@ -113,8 +113,8 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         #cooldown reduced, damage increased
         "price": 1000,
         "upgrade_price": 500,
-        "cooldown": 0.6,
-        "damage": 4, 
+        "cooldown": 0.5,
+        "damage": 8, 
         "slow": 0, 
         "range": 10000,
         "bullet": "nanomaterial",
@@ -125,10 +125,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         #cooldown reduced, range increased
         "price": 600,
         "upgrade_price": 300,
-        "cooldown": 0.8, 
+        "cooldown": 0.5, 
         "damage": 0, 
         "slow": 1,
-        "range": 200,
+        "range": 250,
         "bullet": "soap",
         "description": "Slows bloons with soap"
         },
@@ -137,10 +137,10 @@ towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dicti
         #damage increased, range increased
         "price": 6500,
         "upgrade_price": 2000,
-        "cooldown": 0.01,
+        "cooldown": 0.005,
         "damage": 2,
         "slow": 0,
-        "range": 250, #original 275
+        "range": 275, #original 275
         "bullet": "matrix",
         "description": "Shoots super fast lasers"
         }

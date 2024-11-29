@@ -76,6 +76,11 @@ class Game(object): #MW: create a class for the game
     
     #MW: MADISON made this function (to randomly make the level night time)
     def timeOfDay(self):
+
+        for monkey in player.towers:  #SZ: coded this here so that at the start of each choice it makes sure the original values of range/cooldown will be used
+                monkey.cooldown = towerTypes[monkey.name]["cooldown"] #SZ: makes sure that the cooldown is the proper cooldown/range after the night 
+                monkey.range = towerTypes[monkey.name]["range"]
+
         isNight = random.choice([True,False,False,False]) #MW: use the random module and list of Booleans to randomly decide whether a level will take place at night (there's a 25% chance of any level being night)
         self.nighttime = isNight
 
